@@ -53,5 +53,31 @@ among the errors.</li>
 <li>Also applying <b>LASSO</b> technique to select regressors and compare the results obtained from both <b>RIDGE</b> and <b>LASSO</b> technique. Finally we will come to a decision to which model will be preferred most to serve our purpose.</li>
 <li>We see <b>RIDGE</b> perfored well in terms of <b>LASSO</b> for <b>BETTER VARIABLE SELECTION</b> through both have same <b>R-SQUARED</b> value.</li>
 </div>
+
+<div id="VARIABLE DESCRIPTIONS" class="section level3">
+<h2>VARIABLE DESCRIPTIONS</h2>
+<p>For our analysis,</p>
+<li><b>RESPONSE VARIABLE(Y)</b>: <b>GROSS NATIONAL INCOME</b> (in Current LCU) in Billion</li>
+<p>and the <b>EXPLANATORY VARIABLES</b>:</p>
+<li><b>AGRICULTURAL PRODUCTION OF FOOD GRAINS (X1)</b> In Million Metric Tonnes</li>
+<li><b>AGRICULTURAL PRODUCTION OF COMMERCIAL PRODUCTS (X2)</b> in Million Metric</li>
+<li><b>PRODUCTION OF CRUDE OIL AND PETROLEUM (X3)</b> in Million Metric tonnes</li>
+<li><b>IMPORT-OF CRUDE OIL AND PETROLEUM (X4)</b> in Million Metric tonnes</li>
+<li><b>GOLD PRICE IN MUMBAI(INDIA) (X5)</b> in Rupees</li>
+<li><b>DIRECT AND INDIRECT TAX REVENUE (X6)</b> in Billion Rupees</li>
+<li><b>TOTAL SAVING DEPOSITS IN COMMERCIAL BANKS (X7)</b> in Billion Rupees</li>
+<li><b>GROSS FISCAL DEFICIT (X8)</b> in Billion Rupees</li>
+<li><b>COMBINED NET BORROWING OF CENTRAL AND STATE GOVERNMENT (X9)</b> in Billion Rupees</li>
+<li><b>CURRENCY WITH PUBLIC (X10)</b> in Billion Rupees</li>
+<li><b>GOVERNMENT’S DEVELOPMENTAL AND NON-DEVELOPMENTAL EXPENDITURE (X11)</b> in Billion Rupees</li>
+<li><b>NET BANK CREDITED TO GOVERNMENT (X12)</b> in Billion Rupees</li>
+<li><b>INVESTMENT BY LIC (X13)</b> in Billion Rupees</li>
+<li><b>COMBINED LIABILITIES OF THE CENTRAL AND STATE GOVERMENT (X14)</b> in Billion Rupees</li>
+<li><b>EXPORT OF PRINCIPAL COMMODITIES (X15)</b> in Billion Rupees</li>
+<li><b>IMPORT OF PRINCIPAL COMMODITIES (X16)</b> in Billion Rupees</li>
+<li><b>FOREIGN DIRECT INVESTMENT INFLOWS (X17)</b> in Billion Rupees</li>
+<li><b>FOREIGN EXCHANGE RESERVES IN TERMS OF GOLD, FOREIGN CURRENCY ASSETS, RESERVE TRANCHE POSITION (X18)</b> in Billion Rupees</li>
+<li><b>NET INFLOWOF AID (X19)</b> in Crore Rupees</li>
+<li><b>CURRENCY IN CIRCULATION (X20)</b> in Billion Rupees</li>
 </body>
 </html>
