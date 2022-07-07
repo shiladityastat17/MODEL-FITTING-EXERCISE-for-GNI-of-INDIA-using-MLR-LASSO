@@ -61,22 +61,127 @@ proportion of a country’s production, as is the case with Ireland, a low-tax j
 dat <- read.csv('C:/Users/bose1/Downloads/Final_Reg.csv')
 sum(is.na(dat))</code></pre>
 
-<pre class="r"><code>
-sum(duplicated(dat))</code></pre>
+<pre class="r"><code>sum(duplicated(dat))</code></pre>
 
-<pre class="r"><code>
-#Showing the dimension of the dataset 
+<pre class="r"><code>#Showing the dimension of the dataset 
 dim(dat)</code></pre>
 
-<pre class="r"><code>
-#Showing the data types of the different variables 
+<pre class="r"><code>#Showing the data types of the different variables 
 str(dat)
 </code></pre>
 
-<pre class="r"><code>
-regression_data<-dat
+<pre class="r"><code>regression_data<-dat
 data1<-lm(Y~X1+X2+X3+X4+X5+X6+X7+X8+X9+X10+X11+X12+X13+X14+X15+X16+X17+X18+X19+X20,data=regression_data)
 summary(data1)</code></pre>
+
+<pre class="r"><code>data1.stdres = rstandard(data1) 
+qqnorm(data1.stdres)
+abline(-0.1,1.16)
+</code></pre>
+
+<pre class="r"><code>h<-hist(data1.stdres,breaks=10,col='lightblue',xlab='Residuals',main='Histogram with Normal Curve',freq=TRUE) 
+xfit<-seq(min(data1.stdres),max(data1.stdres),length=40) 
+yfit<-dnorm(xfit,mean=mean(data1.stdres),sd=sd(data1.stdres)) 
+yfit<-yfit*diff(h$mids[1:2])*length(data1.stdres) 
+lines(xfit, yfit, col='blue', lwd=2)
+</code></pre>
+
+<pre class="r"><code>shapiro.test(data1.stdres) 
+</code></pre>
+
+<pre class="r"><code>plot(fitted(data1),data1.stdres,ylab='Standardized Residuals',xlab='Fitted values',ylim=c(-1,1.5),xlim=c(0, 30000),main='Residuals vs Fitted', pch=20) 
+abline(0,0,lty=4)
+</code></pre>
+
+<pre class="r"><code>par(mfrow=c(2,2))
+plot(regression_data$X1,data1.stdres,ylab='Standardized Residuals',xlab='X1',main='Residuals vs X1',pch=20) 
+abline(0,0,lty=4) 
+plot(regression_data$X2,data1.stdres,ylab='Standardized Residuals',xlab='X2',main='Residuals vs X2',pch=20) 
+abline(0,0,lty=4) 
+plot(regression_data$X3,data1.stdres,ylab='Standardized Residuals',xlab='X3',main='Residuals vs X3',pch=20) 
+abline(0,0,lty=4) 
+plot(regression_data$X4,data1.stdres,ylab='Standardized Residuals',xlab='X4',main='Residuals vs X4',pch=20) 
+abline(0,0,lty=4)
+par(mfrow=c(2,2))
+plot(regression_data$X5,data1.stdres,ylab='Standardized Residuals',xlab='X5',main='Residuals vs X5',pch=20) 
+abline(0,0,lty=4) 
+plot(regression_data$X6,data1.stdres,ylab='Standardized Residuals',xlab='X6',main='Residuals vs X6',pch=20) 
+abline(0,0,lty=4)
+plot(regression_data$X7,data1.stdres,ylab='Standardized Residuals',xlab='X7',main='Residuals vs X7',pch=20) 
+abline(0,0,lty=4) 
+plot(regression_data$X8,data1.stdres,ylab='Standardized Residuals',xlab='X8',main='Residuals vs X8',pch=20) 
+abline(0,0,lty=4)
+par(mfrow=c(2,2))
+plot(regression_data$X9,data1.stdres,ylab='Standardized Residuals',xlab='X9',main='Residuals vs X9',pch=20) 
+abline(0,0,lty=4) 
+plot(regression_data$X10,data1.stdres,ylab='Standardized Residuals',xlab='X10',main='Residuals vs X10',pch=20) 
+abline(0,0,lty=4) 
+plot(regression_data$X11,data1.stdres,ylab='Standardized Residuals',xlab='X11',main='Residuals vs X11',pch=20) 
+abline(0,0,lty=4) 
+plot(regression_data$X12,data1.stdres,ylab='Standardized Residuals',xlab='X12',main='Residuals vs X12',pch=20) 
+abline(0,0,lty=4) 
+par(mfrow=c(2,2))
+plot(regression_data$X13,data1.stdres,ylab='Standardized Residuals',xlab='X13',main='Residuals vs X13',pch=20) 
+abline(0,0,lty=4) 
+plot(regression_data$X14,data1.stdres,ylab='Standardized Residuals',xlab='X14',main='Residualsvs X14',pch=20) 
+abline(0,0,lty=4) 
+plot(regression_data$X15,data1.stdres,ylab='Standardized Residuals',xlab='X15',main='Residuals vs X15',pch=20) 
+abline(0,0,lty=4) 
+plot(regression_data$X16,data1.stdres,ylab='Standardized Residuals',xlab='X16',main='Residuals vs X16',pch=20) 
+abline(0,0,lty=4) 
+par(mfrow=c(2,2)) 
+plot(regression_data$X17,data1.stdres,ylab='Standardized Residuals',xlab='X17',main='Residuals vs X17',pch=20) 
+abline(0,0,lty=4) 
+plot(regression_data$X18,data1.stdres,ylab='Standardized Residuals',xlab='X18',main='Residuals vs X18',pch=20) 
+abline(0,0,lty=4) 
+plot(regression_data$X19,data1.stdres,ylab='Standardized Residuals',xlab='X19',main='Residuals vs X19',pch=20) 
+abline(0,0,lty=4) 
+plot(regression_data$X20,data1.stdres,ylab='Standardized Residuals',xlab='X20',main='Residuals vs X20',pch=20) 
+abline(0,0,lty=4) 
+par(mfrow=c(2,2))
+</code></pre>
+
+<pre class="r"><code>library(lmtest) 
+bptest(data1)
+</code></pre>
+
+<pre class="r"><code>dwtest(data1,order.by=NULL,alternative=c('two.sided'),iterations=20,exact=NULL,tol=1e-10,data = list())
+</code></pre>
+
+<pre class="r"><code>
+</code></pre>
+
+<pre class="r"><code>
+</code></pre>
+
+<pre class="r"><code>
+</code></pre>
+
+<pre class="r"><code>
+</code></pre>
+
+<pre class="r"><code>
+</code></pre>
+
+<pre class="r"><code>
+</code></pre>
+
+<pre class="r"><code>
+</code></pre>
+
+<pre class="r"><code>
+</code></pre>
+
+<pre class="r"><code>
+</code></pre>
+
+<pre class="r"><code>
+</code></pre>
+
+<pre class="r"><code>
+</code></pre>
+
+
 
 <pre><code>## Loading required package: rpart.plot</code></pre>
 <pre class="r"><code>if(!IsRpartPlotInstalled){
