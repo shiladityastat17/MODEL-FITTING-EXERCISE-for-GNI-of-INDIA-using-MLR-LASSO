@@ -1,22 +1,5 @@
-# Model Fitting for GNI of INDIA using MLR
 This is a model fitting exercise using MLR as the effects of the major Economical variables as regressors on the change in GROSS NATIONAL INCOME(GNI) (at current prices) of INDIA 
-\documentclass[a4paper,12pt,twoside]{book}
-\usepackage[subtle]{savetrees}
-\usepackage{caption}
-\usepackage{subfig}
-\usepackage{subcaption}
-\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
-\usepackage[utf8]{inputenc}
-\usepackage{graphicx}
-\usepackage[english]{babel}
-\usepackage{fancyhdr}
-\usepackage{amsmath}
-\pagestyle{headings}
-\pagestyle{fancy}
-\fancyhf{}
-\rhead{MLR Model}
-\rfoot{Page \thepage}
-\begin{document}
+
 \section{ORDINARY LEAST SQUARE FITTING}
 \subsection{TEST FOR SIGNIFICANCE OF THE REGRESSORS:}
 \[H_0\::\:\beta_1\:=\;...\;=\:\beta_{20}\:=\:0\] \[against\]
