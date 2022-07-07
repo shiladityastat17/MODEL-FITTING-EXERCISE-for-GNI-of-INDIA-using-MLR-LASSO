@@ -22,8 +22,8 @@ ON THE CHANGE IN GROSS NATIONAL
 INCOME(GNI) (AT CURRENT PRICES) OF INDIA
 (1981-2021)</h1>
 <h4 class="author"><em>Shiladitya Bose</em></h4>
-<h4 class="date"><em><ol start="12" style="list-style-type: decimal">
-<li>May 2021</li>
+<h4 class="date"><em><ol start="10" style="list-style-type: decimal">
+<li>May 2022</li>
 </ol></em></h4>
 </div>
 
