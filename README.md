@@ -30,16 +30,16 @@ INCOME(GNI) (AT CURRENT PRICES) OF INDIA
 
 <div id="synopsis" class="section level2">
 <h2>Synopsis</h2>
-<p><b>GROSS NATIONAL INCOME(GNI)</b> is the total amount of money earned by a nation’s people and businesses. It is used to measure and track a nation’s wealth from year to year. The number includes the nation’s <b>GROSS DOMESTIC PRODUCT (GDP)</b> plus the income it receives from overseas sources. The more widely known term GDP is an estimate of the total value of all goods and services produced within a nation for a set period, usually a year.<p>
-<p>GNI is an alternative to GDP as a means of measuring and tracking a nation’s wealth and is considered a more accurate indicator for some nations. GNI is an alternative to GDP as a measure of wealth. It calculates income instead of output.<\p>
-<p>GNI can be calculated by adding income from foreign sources to GDP. Nations that have substantial foreign direct investment, foreign corporate presence, or
-foreign aid will show a significant difference between GNI and GDP.<\p>
-<p>GNI calculates the total income earned by a nation’s people and businesses, including investment income, regardless of where it was earned. It also covers money received from abroad such as foreign investment and economic development aid.<\p>
-<p>For nations, like the US, there is little difference between GDP and GNI, since the difference between income received versus payments made to the rest of the world does not tend to be significant. For some countries, however, the difference is significant. Conversely, it can be much lower if foreigners control a large
-proportion of a country’s production, as is the case with Ireland, a low-tax jurisdiction where the European and U.S. subsidiaries of a number of multinational companies nominally reside.<\p>
-<p> The formula of GNI is:<\p>
-GNI = C + I + G + X
-<p>where : PERSONAL CONSUMPTION (C), BUSINESS INVESTMENT (I), GOVERNMENT SPENDING (G), EXPORTS - IMPORTS (X).</p>
+<p><b>GROSS NATIONAL INCOME(GNI)</b> is the total amount of money earned by a nation’s people and businesses. It is used to measure and track a nation’s wealth from year to year. The number includes the nation’s <b>GROSS DOMESTIC PRODUCT (GDP)</b> plus the income it receives from overseas sources. The more widely known term GDP is an estimate of the total value of all goods and services produced within a nation for a set period, usually a year.
+    GNI is an alternative to GDP as a means of measuring and tracking a nation’s wealth and is considered a more accurate indicator for some nations. GNI is an alternative to GDP as a measure of wealth. It calculates income instead of output.
+    GNI can be calculated by adding income from foreign sources to GDP. Nations that have substantial foreign direct investment, foreign corporate presence, or
+foreign aid will show a significant difference between GNI and GDP.
+    GNI calculates the total income earned by a nation’s people and businesses, including investment income, regardless of where it was earned. It also covers money received from abroad such as foreign investment and economic development aid.
+    For nations, like the US, there is little difference between GDP and GNI, since the difference between income received versus payments made to the rest of the world does not tend to be significant. For some countries, however, the difference is significant. Conversely, it can be much lower if foreigners control a large
+proportion of a country’s production, as is the case with Ireland, a low-tax jurisdiction where the European and U.S. subsidiaries of a number of multinational companies nominally reside.
+The formula of GNI is:
+<b>GNI = C + I + G + X<\b>
+<p>where : <b>PERSONAL CONSUMPTION(C)<\b>, <b>BUSINESS INVESTMENT(I)<\b>, <b>GOVERNMENT SPENDING(G)<\b>, <b>EXPORTS - IMPORTS(X)<\b>.</p>
 <p>The goal of this project is to predict the manner in which they did the exercise. This is the <code>classe</code> variable in the training set.</p>
 </div>
 <div id="data-description" class="section level2">
