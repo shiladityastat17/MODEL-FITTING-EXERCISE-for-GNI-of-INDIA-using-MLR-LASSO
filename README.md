@@ -17,7 +17,7 @@
 
 
 <div id="header">
-<h1 class="title">BASIC OUTLINE OF THE PROJECT BASED ON EFFECTS OF THE MAJOR ECONOMICAL VARIABLES
+<h1 class="title">OUTLINE OF THE PROJECT BASED ON EFFECTS OF THE MAJOR ECONOMICAL VARIABLES
 ON THE CHANGE IN GROSS NATIONAL
 INCOME(GNI) (AT CURRENT PRICES) OF INDIA
 (1981-2021)</h1>
@@ -51,7 +51,7 @@ assumptions i.e. <b>NORMALITY</b>, <b>HETEROSCEDASTICITY</b> assumption of the e
 among the errors.</li>
 <li>Also tried on to solve <b>MULTICOLLINEARITY</b> problems using <b>VIF</b> and </b>VARIANCE DECOMPOSITION</b> Method. Then apply <b>STEPWISE SELECTION</b>, <b>AIC</b> and then <b>RIDGE</b> regression to introduce bias and <b>REMOVE MULTICOLLINEARITY</b> problem.</li>
 <li>Also applying <b>LASSO</b> technique to select regressors and compare the results obtained from both <b>RIDGE</b> and <b>LASSO</b> technique. Finally we will come to a decision to which model will be preferred most to serve our purpose.</li>
-<li>We see <b>RIDGE</b> perfored well in terms of <b>LASSO</b> for </b>BETTER VARIABLE SELECTION</b> through both have same <b>R-SQUARED</b> value.</li>
+<li>We see <b>RIDGE</b> perfored well in terms of <b>LASSO</b> for <b>BETTER VARIABLE SELECTION</b> through both have same <b>R-SQUARED</b> value.</li>
 </div>
 </body>
 </html>
