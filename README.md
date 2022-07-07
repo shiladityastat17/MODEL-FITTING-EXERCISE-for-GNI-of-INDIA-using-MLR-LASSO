@@ -59,39 +59,25 @@ proportion of a country’s production, as is the case with Ireland, a low-tax j
 
 <pre class="r"><code>#Data variables
 dat <- read.csv('C:/Users/bose1/Downloads/Final_Reg.csv')
-sum(is.na(dat))
+sum(is.na(dat))</code></pre>
 
-#Directories
+<pre class="r"><code>
+sum(duplicated(dat))</code></pre>
 
+<pre class="r"><code>
+#Showing the dimension of the dataset 
+dim(dat)</code></pre>
 
-#R-Packages
-IscaretInstalled &lt;- require(&quot;caret&quot;)</code></pre>
-<pre><code>## Loading required package: caret
-## Loading required package: lattice
-## Loading required package: ggplot2</code></pre>
+<pre class="r"><code>
+#Showing the data types of the different variables 
+str(dat)
+</code></pre>
 
-<pre class="r"><code>if(!IscaretInstalled){
-    install.packages(&quot;caret&quot;)
-    library(&quot;caret&quot;)
-    }
+<pre class="r"><code>
+regression_data<-dat
+data1<-lm(Y~X1+X2+X3+X4+X5+X6+X7+X8+X9+X10+X11+X12+X13+X14+X15+X16+X17+X18+X19+X20,data=regression_data)
+summary(data1)</code></pre>
 
-IsrandomForestInstalled &lt;- require(&quot;randomForest&quot;)</code></pre>
-<pre><code>## Loading required package: randomForest
-## randomForest 4.6-10
-## Type rfNews() to see new features/changes/bug fixes.</code></pre>
-<pre class="r"><code>if(!IsrandomForestInstalled){
-    install.packages(&quot;randomForest&quot;)
-    library(&quot;randomForest&quot;)
-    }
-
-IsRpartInstalled &lt;- require(&quot;rpart&quot;)</code></pre>
-<pre><code>## Loading required package: rpart</code></pre>
-<pre class="r"><code>if(!IsRpartInstalled){
-    install.packages(&quot;rpart&quot;)
-    library(&quot;rpart&quot;)
-    }
-
-IsRpartPlotInstalled &lt;- require(&quot;rpart.plot&quot;)</code></pre>
 <pre><code>## Loading required package: rpart.plot</code></pre>
 <pre class="r"><code>if(!IsRpartPlotInstalled){
     install.packages(&quot;rpart.plot&quot;)
