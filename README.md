@@ -1,5 +1,4 @@
-This is a model fitting exercise using MLR as the effects of the major Economical variables as regressors on the change in GROSS NATIONAL INCOME(GNI) (at current prices) of INDIA 
-<!DOCTYPE html>
+ <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -18,7 +17,10 @@ This is a model fitting exercise using MLR as the effects of the major Economica
 
 
 <div id="header">
-<h1 class="title">Predict activity quality from activity monitors</h1>
+<h1 class="title">EFFECTS OF THE MAJOR ECONOMICAL VARIABLES
+ON THE CHANGE IN GROSS NATIONAL
+INCOME(GNI) (AT CURRENT PRICES) OF INDIA
+(1981-2021)</h1>
 <h4 class="author"><em>Shiladitya Bose</em></h4>
 <h4 class="date"><em><ol start="12" style="list-style-type: decimal">
 <li>May 2021</li>
