@@ -17,7 +17,7 @@
 
 
 <div id="header">
-<h1 class="title">EFFECTS OF THE MAJOR ECONOMICAL VARIABLES
+<h1 class="title">BASIC OUTLINE OF THE PROJECT BASED ON EFFECTS OF THE MAJOR ECONOMICAL VARIABLES
 ON THE CHANGE IN GROSS NATIONAL
 INCOME(GNI) (AT CURRENT PRICES) OF INDIA
 (1981-2021)</h1>
@@ -44,14 +44,14 @@ proportion of a country’s production, as is the case with Ireland, a low-tax j
 </div>
 <div id="PROJECT-DESCRIPTION" class="section level2">
 <h2>PROJECT-DESCRIPTION</h2>
-<p>Collected data on GNI (at current price) and on 20 other economic variables for past 40 years FROM RBI website and
-performed Data Cleansing task.</p>
-<li>Fitted an MLR model on the dataset and planning and working on checking for validation of basic
-assumptions i.e. Normality, Heteroscedasticity assumption of the errors and presence of Autocorrelation
+<li>Collected data on GNI (at current price) and on 20 other economic variables for past 40 years FROM RBI website and
+performed Data Cleansing task.</li>
+<li>Fitted an <b>MLR</b> model on the dataset and planning and working on checking for validation of basic
+assumptions i.e. <b>NORMALITY</b>, <b>HETEROSCEDASTICITY</b> assumption of the errors and <b>PRESENCE</b> of <b>AUTOCORRELATION</b>
 among the errors.</li>
-<li>Also tried on to solve multicollinearity problems using VIF and Variance Decomposition Method. Then apply stepwise selection, AIC and then Ridge regression to introduce bias and remove Multicollinearity problem.</li>
-<li>Also applying LASSO technique to select regressors and compare the results obtained from both Ridge and LASSO technique. Finally we will come to a decision to which model will be preferred most to serve our purpose.</li>
-<li>We see Ridge perfored well in terms of LASSO for better variable selection through both have same R-squared value.</li>
+<li>Also tried on to solve <b>MULTICOLLINEARITY</b> problems using <b>VIF</b> and </b>VARIANCE DECOMPOSITION</b> Method. Then apply <b>STEPWISE SELECTION</b>, <b>AIC</b> and then <b>RIDGE</b> regression to introduce bias and <b>REMOVE MULTICOLLINEARITY</b> problem.</li>
+<li>Also applying <b>LASSO</b> technique to select regressors and compare the results obtained from both <b>RIDGE</b> and <b>LASSO</b> technique. Finally we will come to a decision to which model will be preferred most to serve our purpose.</li>
+<li>We see <b>RIDGE</b> perfored well in terms of <b>LASSO</b> for </b>BETTER VARIABLE SELECTION</b> through both have same <b>R-SQUARED</b> value.</li>
 </div>
 </body>
 </html>
