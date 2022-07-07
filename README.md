@@ -56,25 +56,20 @@ proportion of a country’s production, as is the case with Ireland, a low-tax j
 <div id="initial-configuration" class="section level2">
 <h2>Initial configuration</h2>
 <p>The initial configuration consists of loading some required packages and initializing some variables.</p>
+
 <pre class="r"><code>#Data variables
-training.file   &lt;- './data/pml-training.csv'
-test.cases.file &lt;- './data/pml-testing.csv'
-training.url    &lt;- 'http://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv'
-test.cases.url  &lt;- 'http://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv'
+dat <- read.csv('C:/Users/bose1/Downloads/Final_Reg.csv')
+sum(is.na(dat))
 
 #Directories
-if (!file.exists(&quot;data&quot;)){
-  dir.create(&quot;data&quot;)
-}
-if (!file.exists(&quot;data/submission&quot;)){
-  dir.create(&quot;data/submission&quot;)
-}
+
 
 #R-Packages
 IscaretInstalled &lt;- require(&quot;caret&quot;)</code></pre>
 <pre><code>## Loading required package: caret
 ## Loading required package: lattice
 ## Loading required package: ggplot2</code></pre>
+
 <pre class="r"><code>if(!IscaretInstalled){
     install.packages(&quot;caret&quot;)
     library(&quot;caret&quot;)
