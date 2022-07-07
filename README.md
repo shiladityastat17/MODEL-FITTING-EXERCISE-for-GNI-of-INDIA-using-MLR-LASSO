@@ -142,79 +142,135 @@ par(mfrow=c(2,2))
 </code></pre>
 
 <pre class="r"><code>library(lmtest) 
-bptest(data1)
+bptest(data1)</code></pre>
+
+<pre class="r"><code>dwtest(data1,order.by=NULL,alternative=c('two.sided'),iterations=20,exact=NULL,tol=1e-10,data = list())</code></pre>
+
+<pre class="r"><code>library(car) 
+vif(data1)</code></pre>
+
+<pre class="r"><code>library(mctest)
+eigprop(data1) </code></pre>
+
+<pre class="r"><code>olsreg_1<-lm(Y~X1+X2+X3+X4+X5+X6+X7+X8+X9+X10+X12+X13+X14+X15+X16+X17+X18+X19,regression_data) 
+eigprop(olsreg_1)</code></pre>
+
+<pre class="r"><code>olsreg_2<-lm(Y~X1+X2+X4+X5+X7+X8+X9+X10+X12+X13+X15+X16+X17+X18+X19,regression_data) 
+eigprop(olsreg_2)</code></pre>
+
+<pre class="r"><code>olsreg_3<-lm(Y~X1+X2+X4+X5+X8+X9+X10+X13+X15+X16+X17+X18+X19,regression_data) 
+eigprop(olsreg_3)</code></pre>
+
+<pre class="r"><code>olsreg_4<-lm(Y~X1+X4+X5+X8+X9+X10+X13+X16+X17+X18+X19,regression_data) 
+eigprop(olsreg_4)</code></pre>
+
+<pre class="r"><code>olsreg_5<-lm(Y~X4+X9+X10+X13+X16+X17+X18+X19,regression_data) 
+eigprop(olsreg_5)</code></pre>
+
+<pre class="r"><code>olsreg_6<-lm(Y~X4+X9+X16+X17+X18+X19,regression_data) 
+eigprop(olsreg_6)</code></pre>
+
+<pre class="r"><code>olsreg_7<-lm(Y~X9+X16+X17+X19,regression_data) 
+eigprop(olsreg_7)</code></pre>
+
+<pre class="r"><code>library(olsrr)
+Step <- ols_step_both_p(data1,pent=0.05,prem=0.05) 
+Step</code></pre>
+
+<pre class="r"><code>library(MASS) 
+AIC<-stepAIC(data1,direction='both') 
+AIC</code></pre>
+
+<pre class="r"><code>summary(AIC)
 </code></pre>
 
-<pre class="r"><code>dwtest(data1,order.by=NULL,alternative=c('two.sided'),iterations=20,exact=NULL,tol=1e-10,data = list())
+<pre class="r"><code>vif(AIC)
 </code></pre>
 
-<pre class="r"><code>
-</code></pre>
+<pre class="r"><code>library(tidyverse) 
+df <- regression_data %>% select(4:5, 9:18, 20, 22) 
+library(lmridge) 
+ridge_mod = lmridge(regression_data$Y~.,df, K = seq(0, 0.1, 0.001),scaling='sc') </code></pre>
 
-<pre class="r"><code>
-</code></pre>
+<pre class="r"><code>plot(ridge_mod, type = 'ridge')
+model1=lmridge(regression_data$Y~.,df, K=0.031) 
+summary(model1) 
+summary(model1)$summaries[[1]]$stats</code></pre>
 
-<pre class="r"><code>
-</code></pre>
+<pre class="r"><code>vif(model1)</code></pre>
 
-<pre class="r"><code>
-</code></pre>
+<pre class="r"><code>res<-residuals(model1) 
+yhat<-fitted(model1) 
+cor(res,yhat)</code></pre>
 
-<pre class="r"><code>
-</code></pre>
+<pre class="r"><code>plot(res,yhat,xlab='Residual',ylab='Fitted',main='Residual Vs Fitted Plot',pch=20) 
+abline(h=0)</code></pre>
 
-<pre class="r"><code>
-</code></pre>
+<pre class="r"><code>library(lmtest) 
+bptest(model1)</code></pre>
 
-<pre class="r"><code>
-</code></pre>
+<pre class="r"><code>shapiro.test(res) 
+qqnorm(res) 
+abline(0,2000)</code></pre>
 
-<pre class="r"><code>
-</code></pre>
+<pre class="r"><code>cor(regression_data$Y,yhat)</code></pre>
 
-<pre class="r"><code>
-</code></pre>
+<pre class="r"><code>par(mfrow=c(2,1))
+plot(regression_data$Y,yhat) 
+plot(regression_data$Y,yhat,type='l',col='lightblue',lwd=10,xlab='y',ylab='yhat',main='Observed vs Fitted Graph')
+lines(regression_data$Y,yhat,col='red',lwd=2) 
+lines(regression_data$Y,yhat,type='b',col="red",lwd=2,pch=19)</code></pre>
 
-<pre class="r"><code>
-</code></pre>
+<pre class="r"><code>library(caret)
+library(glmnet)
+C<- regression_data[,3:22]
+Y_var <- regression_data[,2 ]
+lasso_model = train(x = C,y = Y_var,method = "glmnet") 
+lasso_model</code></pre>
 
-<pre class="r"><code>
-</code></pre>
+<pre class="r"><code>#R squared scores 
+data.frame(as.data.frame.matrix(coef(lasso_model$finalModel, lasso_model$bestTune$lambda)))</code></pre>
+
+<pre class="r"><code>Y_var <- regression_data[,2 ]
+yhat<-fitted(lasso_model)
+resid<-residuals(lasso_model)
+cor(Y_var,resid)
+#cor(Y_var,yhat)</code></pre>
+
+<pre class="r"><code>Y_var <- regression_data[,2 ]
+yhat<-fitted(lasso_model)
+resid<-residuals(model1)
+cor(Y_var,resid)
+cor(Y_var,yhat)</code></pre>
+
+<pre class="r"><code>#Make the predictions 
+predictions_lasso <- lasso_model %>% predict(regression_data) 
+R_sq<-data.frame(Lasso_R2 = R2(predictions_lasso, Y_var))
+Q<-R_sq$Lasso_R2 
+Adj_R_sq<-(1-(39/19)*(1-Q))
+Adj_R_sq</code></pre>
+
+<pre class="r"><code>par(mfrow=c(2,1))
+plot(Y_var,yhat)
+plot(Y_var,yhat, type="l", col="light blue", lwd=10, xlab="y", ylab="yhat", main="Observed vs Fitted Graph (LASSO)") 
+lines(Y_var, yhat, col="red", lwd=2) 
+lines(Y_var, yhat, type="b", col="red", lwd=2, pch=19)</code></pre>
 
 
 
-<pre><code>## Loading required package: rpart.plot</code></pre>
-<pre class="r"><code>if(!IsRpartPlotInstalled){
-    install.packages(&quot;rpart.plot&quot;)
-    library(&quot;rpart.plot&quot;)
-    }
 
-#Set seed for reproducability
-set.seed(9999)</code></pre>
+
 </div>
 <div id="data-processing" class="section level2">
 <h2>Data processing</h2>
 <p>In this section the data is downloaded and processed. Some basic transformations and cleanup will be performed, so that <code>NA</code> values are omitted. Irrelevant columns such as <code>user_name</code>, <code>raw_timestamp_part_1</code>, <code>raw_timestamp_part_2</code>, <code>cvtd_timestamp</code>, <code>new_window</code>, and <code>num_window</code> (columns 1 to 7) will be removed in the subset.</p>
 <p>The <code>pml-training.csv</code> data is used to devise training and testing sets. The <code>pml-test.csv</code> data is used to predict and answer the 20 questions based on the trained model.</p>
-<pre class="r"><code># Download data
-download.file(training.url, training.file)
-download.file(test.cases.url,test.cases.file )
 
-#Clean data
-training   &lt;-read.csv(training.file, na.strings=c(&quot;NA&quot;,&quot;#DIV/0!&quot;, &quot;&quot;))
-testing &lt;-read.csv(test.cases.file , na.strings=c(&quot;NA&quot;, &quot;#DIV/0!&quot;, &quot;&quot;))
-training&lt;-training[,colSums(is.na(training)) == 0]
-testing &lt;-testing[,colSums(is.na(testing)) == 0]
-#Subset data
-training   &lt;-training[,-c(1:7)]
-testing &lt;-testing[,-c(1:7)]</code></pre>
 </div>
 <div id="cross-validation" class="section level2">
 <h2>Cross-validation</h2>
 <p>In this section cross-validation will be performed by splitting the training data in training (75%) and testing (25%) data.</p>
-<pre class="r"><code>subSamples &lt;- createDataPartition(y=training$classe, p=0.75, list=FALSE)
-subTraining &lt;- training[subSamples, ] 
-subTesting &lt;- training[-subSamples, ]</code></pre>
+
 </div>
 <div id="expected-out-of-sample-error" class="section level2">
 <h2>Expected out-of-sample error</h2>
@@ -233,22 +289,14 @@ subTesting &lt;- training[-subSamples, ]</code></pre>
 <p>In this section a decision tree and random forest will be applied to the data.</p>
 <div id="decision-tree" class="section level3">
 <h3>Decision tree</h3>
-<pre class="r"><code># Fit model
-modFitDT &lt;- rpart(classe ~ ., data=subTraining, method=&quot;class&quot;)
-
-
-#Perform prediction
-predictDT &lt;- predict(modFitDT, subTesting, type = &quot;class&quot;)
-#Plot result
-rpart.plot(modFitDT, main=&quot;Classification Tree&quot;, extra=102, under=TRUE, faclen=0)</code></pre>
 
 ![alt text]( https://github.com/shiladityastat17/Machine_Learning_Random_Forest_Coursera_Project/blob/main/decisiontree-1.png?raw=true)
 
 
   
 <p>Following confusion matrix shows the errors of the prediction algorithm.</p>
-<pre class="r"><code>confusionMatrix(predictDT, subTesting$classe)</code></pre>
-<pre><code>## Confusion Matrix and Statistics
+
+ <pre><code>## Confusion Matrix and Statistics
 ## 
 ##           Reference
 ## Prediction    A    B    C    D    E
@@ -282,44 +330,8 @@ rpart.plot(modFitDT, main=&quot;Classification Tree&quot;, extra=102, under=TRUE
 </div>
 <div id="random-forest" class="section level3">
 <h3>Random forest</h3>
-<pre class="r"><code># Fit model
-modFitRF &lt;- randomForest(classe ~ ., data=subTraining, method=&quot;class&quot;)
 
-#Perform prediction
-predictRF &lt;- predict(modFitRF, subTesting, type = &quot;class&quot;)</code></pre>
 <p>Following confusion matrix shows the errors of the prediction algorithm.</p>
-<pre class="r"><code>confusionMatrix(predictRF, subTesting$classe)</code></pre>
-<pre><code>## Confusion Matrix and Statistics
-## 
-##           Reference
-## Prediction    A    B    C    D    E
-##          A 1394    2    0    0    0
-##          B    1  946    8    0    0
-##          C    0    1  846    6    0
-##          D    0    0    1  796    1
-##          E    0    0    0    2  900
-## 
-## Overall Statistics
-##                                           
-##                Accuracy : 0.9955          
-##                  95% CI : (0.9932, 0.9972)
-##     No Information Rate : 0.2845          
-##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
-##                                           
-##                   Kappa : 0.9943          
-##  Mcnemar's Test P-Value : NA              
-## 
-## Statistics by Class:
-## 
-##                      Class: A Class: B Class: C Class: D Class: E
-## Sensitivity            0.9993   0.9968   0.9895   0.9900   0.9989
-## Specificity            0.9994   0.9977   0.9983   0.9995   0.9995
-## Pos Pred Value         0.9986   0.9906   0.9918   0.9975   0.9978
-## Neg Pred Value         0.9997   0.9992   0.9978   0.9981   0.9998
-## Prevalence             0.2845   0.1935   0.1743   0.1639   0.1837
-## Detection Rate         0.2843   0.1929   0.1725   0.1623   0.1835
-## Detection Prevalence   0.2847   0.1947   0.1739   0.1627   0.1839
-## Balanced Accuracy      0.9994   0.9973   0.9939   0.9948   0.9992</code></pre>
 </div>
 </div>
 <div id="conclusion" class="section level2">
@@ -336,24 +348,8 @@ predictRF &lt;- predict(modFitRF, subTesting, type = &quot;class&quot;)</code></
 <div id="submission" class="section level2">
 <h2>Submission</h2>
 <p>In this section the files for the project submission are generated using the random forest algorithm on the testing data.</p>
-<pre class="r"><code># Perform prediction
-predictSubmission &lt;- predict(modFitRF, testing, type=&quot;class&quot;)
-predictSubmission</code></pre>
-<pre><code>##  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 
-##  B  A  B  A  A  E  D  B  A  A  B  C  B  A  E  E  A  B  B  B 
-## Levels: A B C D E</code></pre>
-<pre class="r"><code># Write files for submission
-pml_write_files = function(x){
-  n = length(x)
-  for(i in 1:n){
-    filename = paste0(&quot;./data/submission/problem_id_&quot;,i,&quot;.txt&quot;)
-    write.table(x[i],file=filename,quote=FALSE,row.names=FALSE,col.names=FALSE)
-  }
-}
 
-pml_write_files(predictSubmission)</code></pre>
 </div>
-
 
 </div>
 
